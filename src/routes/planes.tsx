@@ -67,7 +67,7 @@ function PlanesPage() {
       return;
     }
     setErrors({});
-    setDone(result.data.student.split(" ")[0]);
+    setDone(result.data.student.split(" ")[0] ?? result.data.student);
   }
 
   return (
@@ -210,7 +210,7 @@ function PlanesPage() {
   );
 }
 
-function Field({ label, name, error, type = "text", placeholder }: { label: string; name: string; error?: string; type?: string; placeholder?: string }) {
+function Field({ label, name, error, type = "text", placeholder }: { label: string; name: string; error?: string | undefined; type?: string; placeholder?: string }) {
   return (
     <div>
       <Label htmlFor={name} className="font-display text-navy">{label}</Label>

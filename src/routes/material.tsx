@@ -164,11 +164,11 @@ function QuickQuiz() {
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
-  const done = index >= QUIZ.length;
   const q = QUIZ[index];
+  const done = !q;
 
   function choose(i: number) {
-    if (picked !== null) return;
+    if (picked !== null || !q) return;
     setPicked(i);
     if (i === q.answer) setScore((s) => s + 1);
   }
@@ -192,7 +192,7 @@ function QuickQuiz() {
           </span>
         </div>
         <div className="p-8">
-          {done ? (
+          {done || !q ? (
             <div className="py-6 text-center animate-pop">
               <Trophy className="mx-auto size-16 text-sunshine" />
               <p className="mt-4 font-display text-3xl font-bold text-navy">
