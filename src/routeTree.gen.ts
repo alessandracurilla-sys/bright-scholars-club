@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ClasesRouteImport } from './routes/clases'
+import { Route as MaterialRouteImport } from './routes/material'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const ClasesRoute = ClasesRouteImport.update({
   path: '/clases',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MaterialRoute = MaterialRouteImport.update({
+  id: '/material',
+  path: '/material',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/clases': typeof ClasesRoute
+  '/material': typeof MaterialRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/clases': typeof ClasesRoute
+  '/material': typeof MaterialRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/clases': typeof ClasesRoute
+  '/material': typeof MaterialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/clases'
+  fullPaths: '/' | '/clases' | '/material'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/clases'
-  id: '__root__' | '/' | '/clases'
+  to: '/' | '/clases' | '/material'
+  id: '__root__' | '/' | '/clases' | '/material'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClasesRoute: typeof ClasesRoute
+  MaterialRoute: typeof MaterialRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClasesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/material': {
+      id: '/material'
+      path: '/material'
+      fullPath: '/material'
+      preLoaderRoute: typeof MaterialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClasesRoute: ClasesRoute,
+  MaterialRoute: MaterialRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

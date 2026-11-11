@@ -134,14 +134,15 @@ function MaterialPage() {
                     {m.pages && <span>{m.pages} págs.</span>}
                     <span>{m.downloads.toLocaleString("es-PE")} usos</span>
                   </div>
+                  <div className="mt-auto pt-5">
                   <Button
                     variant="pop"
-                    className="mt-auto pt-0"
-                    style={{ marginTop: "1.25rem" }}
+                    className="w-full"
                     onClick={() => toast.success(m.type === "Video" || m.type === "Juego" ? "¡A jugar y aprender! ▶️" : "Descarga iniciada 📥", { description: m.title })}
                   >
                     {m.type === "Video" || m.type === "Juego" ? <><PlayCircle /> Abrir</> : <><Download /> Descargar</>}
                   </Button>
+                  </div>
                 </div>
               </article>
             );
