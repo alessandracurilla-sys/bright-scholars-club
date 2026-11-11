@@ -16,12 +16,18 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        pink: "rounded-full border-[2.5px] border-navy-deep bg-pink font-display font-semibold text-pink-foreground shadow-pop-sm hover:-translate-y-0.5 hover:shadow-pop active:translate-y-0.5 active:shadow-none transition-all",
+        navy: "rounded-full border-[2.5px] border-navy-deep bg-navy font-display font-semibold text-navy-foreground shadow-pop-sm hover:-translate-y-0.5 hover:shadow-pop active:translate-y-0.5 active:shadow-none transition-all",
+        pop: "rounded-full border-[2.5px] border-navy-deep bg-card font-display font-semibold text-foreground shadow-pop-sm hover:-translate-y-0.5 hover:bg-pink-soft hover:shadow-pop active:translate-y-0.5 active:shadow-none transition-all",
+        sunshine: "rounded-full border-[2.5px] border-navy-deep bg-sunshine font-display font-semibold text-sunshine-foreground shadow-pop-sm hover:-translate-y-0.5 hover:shadow-pop active:translate-y-0.5 active:shadow-none transition-all",
+        success: "rounded-full border-[2.5px] border-navy-deep bg-mint font-display font-semibold text-navy-deep shadow-pop-sm transition-all",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        xl: "h-14 px-8 text-lg [&_svg]:size-5",
       },
     },
     defaultVariants: {
