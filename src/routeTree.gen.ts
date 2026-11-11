@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BecasRouteImport } from './routes/becas'
 import { Route as ClasesRouteImport } from './routes/clases'
 import { Route as MaterialRouteImport } from './routes/material'
+import { Route as PlanesRouteImport } from './routes/planes'
 import { Route as ProgresoRouteImport } from './routes/progreso'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BecasRoute = BecasRouteImport.update({
+  id: '/becas',
+  path: '/becas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClasesRoute = ClasesRouteImport.update({
@@ -29,6 +36,11 @@ const MaterialRoute = MaterialRouteImport.update({
   path: '/material',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanesRoute = PlanesRouteImport.update({
+  id: '/planes',
+  path: '/planes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgresoRoute = ProgresoRouteImport.update({
   id: '/progreso',
   path: '/progreso',
@@ -37,35 +49,50 @@ const ProgresoRoute = ProgresoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
   '/material': typeof MaterialRoute
+  '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
   '/material': typeof MaterialRoute
+  '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
   '/material': typeof MaterialRoute
+  '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/clases' | '/material' | '/progreso'
+  fullPaths: '/' | '/becas' | '/clases' | '/material' | '/planes' | '/progreso'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/clases' | '/material' | '/progreso'
-  id: '__root__' | '/' | '/clases' | '/material' | '/progreso'
+  to: '/' | '/becas' | '/clases' | '/material' | '/planes' | '/progreso'
+  id:
+    | '__root__'
+    | '/'
+    | '/becas'
+    | '/clases'
+    | '/material'
+    | '/planes'
+    | '/progreso'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BecasRoute: typeof BecasRoute
   ClasesRoute: typeof ClasesRoute
   MaterialRoute: typeof MaterialRoute
+  PlanesRoute: typeof PlanesRoute
   ProgresoRoute: typeof ProgresoRoute
 }
 
@@ -76,6 +103,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/becas': {
+      id: '/becas'
+      path: '/becas'
+      fullPath: '/becas'
+      preLoaderRoute: typeof BecasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clases': {
@@ -92,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaterialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/planes': {
+      id: '/planes'
+      path: '/planes'
+      fullPath: '/planes'
+      preLoaderRoute: typeof PlanesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progreso': {
       id: '/progreso'
       path: '/progreso'
@@ -104,8 +145,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BecasRoute: BecasRoute,
   ClasesRoute: ClasesRoute,
   MaterialRoute: MaterialRoute,
+  PlanesRoute: PlanesRoute,
   ProgresoRoute: ProgresoRoute,
 }
 export const routeTree = rootRouteImport
