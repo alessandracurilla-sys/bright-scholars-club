@@ -10,7 +10,7 @@ export function SiteFooter() {
             Cometa<span className="text-pink">.</span>
           </p>
           <p className="mt-3 max-w-sm text-navy-foreground/75">
-            Refuerzo escolar de calidad para que ningún estudiante de primaria o secundaria se quede atrás.
+            Tutoría virtual con diagnóstico y reporte semanal: ningún estudiante debería avanzar solo.
           </p>
         </div>
         <div className="space-y-2">
@@ -22,7 +22,10 @@ export function SiteFooter() {
         <div className="space-y-2">
           <p className="font-display font-semibold text-pink">Oportunidades</p>
           <Link to="/becas" className="block text-navy-foreground/80 hover:text-navy-foreground">Becas y premios</Link>
-          <Link to="/planes" className="block text-navy-foreground/80 hover:text-navy-foreground">Planes y registro</Link>
+          <Link to="/planes" className="block text-navy-foreground/80 hover:text-navy-foreground">Planes</Link>
+          <Link to="/registro" search={{ plan: "grupal" }} className="block text-navy-foreground/80 hover:text-navy-foreground">Registro y diagnóstico</Link>
+          <Link to="/app" className="block text-navy-foreground/80 hover:text-navy-foreground">Mi cuenta</Link>
+          <Link to="/docente" className="block text-navy-foreground/80 hover:text-navy-foreground">Panel del docente (demo)</Link>
         </div>
       </div>
       <div className="border-t border-navy-foreground/15 py-5 text-center text-sm text-navy-foreground/60">
