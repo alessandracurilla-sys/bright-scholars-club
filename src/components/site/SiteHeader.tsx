@@ -7,6 +7,7 @@ const NAV = [
   { to: "/material", label: "Material" },
   { to: "/progreso", label: "Mi progreso" },
   { to: "/becas", label: "Becas y premios" },
+  { to: "/planes", label: "Planes" },
 ] as const;
 
 export function SiteHeader() {
@@ -34,8 +35,11 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-3">
+          <Button asChild variant="pop" size="lg" className="hidden sm:inline-flex">
+            <Link to="/app">Mi cuenta</Link>
+          </Button>
           <Button asChild variant="pink" size="lg">
-            <Link to="/planes">Regístrate</Link>
+            <Link to="/registro" search={{ plan: "grupal" }}>Clase gratis</Link>
           </Button>
         </div>
       </div>

@@ -67,7 +67,7 @@ function ClasesPage() {
         eyebrow="🎥 Clases en vivo"
         emoji="👩‍🏫"
         title={<>Aprende en vivo con <span className="text-pink">profes top</span></>}
-        description="Clases virtuales en grupos pequeños, con profesores que pasaron nuestro filtro de calidad. Pregunta, participa y gana XP."
+        description="Grupos de máximo 4 alumnos del mismo nivel, clases de 1 hora y un docente constante que pasó nuestro filtro de calidad."
       >
         <div className="flex max-w-xl items-center gap-4 rounded-3xl border-[2.5px] border-navy-foreground bg-card p-4 text-foreground shadow-pop-pink">
           <span className="relative flex size-3">
@@ -177,7 +177,7 @@ function ClasesPage() {
             Nuestro filtro de profesores <span className="text-pink">🛡️</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-muted-foreground">
-            Solo 1 de cada 6 postulantes llega a enseñar en Cometa.
+            Cada docente pasa cuatro controles antes de enseñar en Cometa.
           </p>
           <ol className="mt-10 grid gap-6 md:grid-cols-4">
             {FILTER_STEPS.map((s, i) => (

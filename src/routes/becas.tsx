@@ -187,7 +187,7 @@ function BecasPage() {
               ))}
             </ol>
             <p className="bg-muted px-6 py-4 text-sm text-muted-foreground">
-              Los 3 primeros del mes ganan 1 mes del plan Cometa gratis. 🚀
+              Los 3 primeros del mes ganan 1 mes del plan grupal gratis. 🚀
             </p>
           </div>
         </div>

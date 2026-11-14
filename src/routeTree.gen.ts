@@ -10,15 +10,28 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as BecasRouteImport } from './routes/becas'
 import { Route as ClasesRouteImport } from './routes/clases'
+import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
+import { Route as DocenteRouteImport } from './routes/docente'
 import { Route as MaterialRouteImport } from './routes/material'
 import { Route as PlanesRouteImport } from './routes/planes'
 import { Route as ProgresoRouteImport } from './routes/progreso'
+import { Route as RegistroRouteImport } from './routes/registro'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppGrupoRouteImport } from './routes/app.grupo'
+import { Route as AppPlanRouteImport } from './routes/app.plan'
+import { Route as AppReporteRouteImport } from './routes/app.reporte'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BecasRoute = BecasRouteImport.update({
@@ -29,6 +42,16 @@ const BecasRoute = BecasRouteImport.update({
 const ClasesRoute = ClasesRouteImport.update({
   id: '/clases',
   path: '/clases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosticoRoute = DiagnosticoRouteImport.update({
+  id: '/diagnostico',
+  path: '/diagnostico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocenteRoute = DocenteRouteImport.update({
+  id: '/docente',
+  path: '/docente',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MaterialRoute = MaterialRouteImport.update({
@@ -46,54 +69,141 @@ const ProgresoRoute = ProgresoRouteImport.update({
   path: '/progreso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegistroRoute = RegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGrupoRoute = AppGrupoRouteImport.update({
+  id: '/grupo',
+  path: '/grupo',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPlanRoute = AppPlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReporteRoute = AppReporteRouteImport.update({
+  id: '/reporte',
+  path: '/reporte',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/docente': typeof DocenteRoute
   '/material': typeof MaterialRoute
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
+  '/registro': typeof RegistroRoute
+  '/app/grupo': typeof AppGrupoRoute
+  '/app/plan': typeof AppPlanRoute
+  '/app/reporte': typeof AppReporteRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/docente': typeof DocenteRoute
   '/material': typeof MaterialRoute
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
+  '/registro': typeof RegistroRoute
+  '/app/grupo': typeof AppGrupoRoute
+  '/app/plan': typeof AppPlanRoute
+  '/app/reporte': typeof AppReporteRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/becas': typeof BecasRoute
   '/clases': typeof ClasesRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/docente': typeof DocenteRoute
   '/material': typeof MaterialRoute
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
+  '/registro': typeof RegistroRoute
+  '/app/grupo': typeof AppGrupoRoute
+  '/app/plan': typeof AppPlanRoute
+  '/app/reporte': typeof AppReporteRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/becas' | '/clases' | '/material' | '/planes' | '/progreso'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/becas' | '/clases' | '/material' | '/planes' | '/progreso'
-  id:
-    | '__root__'
+  fullPaths:
     | '/'
+    | '/app'
     | '/becas'
     | '/clases'
+    | '/diagnostico'
+    | '/docente'
     | '/material'
     | '/planes'
     | '/progreso'
+    | '/registro'
+    | '/app/grupo'
+    | '/app/plan'
+    | '/app/reporte'
+    | '/app/'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/becas'
+    | '/clases'
+    | '/diagnostico'
+    | '/docente'
+    | '/material'
+    | '/planes'
+    | '/progreso'
+    | '/registro'
+    | '/app/grupo'
+    | '/app/plan'
+    | '/app/reporte'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/becas'
+    | '/clases'
+    | '/diagnostico'
+    | '/docente'
+    | '/material'
+    | '/planes'
+    | '/progreso'
+    | '/registro'
+    | '/app/grupo'
+    | '/app/plan'
+    | '/app/reporte'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
   BecasRoute: typeof BecasRoute
   ClasesRoute: typeof ClasesRoute
+  DiagnosticoRoute: typeof DiagnosticoRoute
+  DocenteRoute: typeof DocenteRoute
   MaterialRoute: typeof MaterialRoute
   PlanesRoute: typeof PlanesRoute
   ProgresoRoute: typeof ProgresoRoute
+  RegistroRoute: typeof RegistroRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -103,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/becas': {
@@ -117,6 +234,20 @@ declare module '@tanstack/react-router' {
       path: '/clases'
       fullPath: '/clases'
       preLoaderRoute: typeof ClasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnostico': {
+      id: '/diagnostico'
+      path: '/diagnostico'
+      fullPath: '/diagnostico'
+      preLoaderRoute: typeof DiagnosticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docente': {
+      id: '/docente'
+      path: '/docente'
+      fullPath: '/docente'
+      preLoaderRoute: typeof DocenteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/material': {
@@ -140,16 +271,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgresoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/registro': {
+      id: '/registro'
+      path: '/registro'
+      fullPath: '/registro'
+      preLoaderRoute: typeof RegistroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/grupo': {
+      id: '/app/grupo'
+      path: '/grupo'
+      fullPath: '/app/grupo'
+      preLoaderRoute: typeof AppGrupoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/plan': {
+      id: '/app/plan'
+      path: '/plan'
+      fullPath: '/app/plan'
+      preLoaderRoute: typeof AppPlanRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reporte': {
+      id: '/app/reporte'
+      path: '/reporte'
+      fullPath: '/app/reporte'
+      preLoaderRoute: typeof AppReporteRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppGrupoRoute: typeof AppGrupoRoute
+  AppPlanRoute: typeof AppPlanRoute
+  AppReporteRoute: typeof AppReporteRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppGrupoRoute: AppGrupoRoute,
+  AppPlanRoute: AppPlanRoute,
+  AppReporteRoute: AppReporteRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
   BecasRoute: BecasRoute,
   ClasesRoute: ClasesRoute,
+  DiagnosticoRoute: DiagnosticoRoute,
+  DocenteRoute: DocenteRoute,
   MaterialRoute: MaterialRoute,
   PlanesRoute: PlanesRoute,
   ProgresoRoute: ProgresoRoute,
+  RegistroRoute: RegistroRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

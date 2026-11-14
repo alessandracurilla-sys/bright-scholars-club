@@ -47,14 +47,14 @@ export type LiveClass = {
 };
 
 export const CLASSES: LiveClass[] = [
-  { id: "c1", title: "Fracciones sin miedo", teacherId: "t1", subject: "Matemática", level: "Primaria", grade: "4.º - 6.º", day: "Hoy", time: "16:00", seats: 25, taken: 21, live: true },
-  { id: "c2", title: "El sistema solar en 3D", teacherId: "t2", subject: "Ciencia", level: "Primaria", grade: "3.º - 5.º", day: "Hoy", time: "17:30", seats: 30, taken: 18 },
-  { id: "c3", title: "Comprensión lectora: detectives del texto", teacherId: "t3", subject: "Comunicación", level: "Primaria", grade: "2.º - 4.º", day: "Mañana", time: "15:00", seats: 25, taken: 9 },
-  { id: "c4", title: "Ecuaciones de primer grado", teacherId: "t1", subject: "Matemática", level: "Secundaria", grade: "1.º - 2.º", day: "Mañana", time: "18:00", seats: 30, taken: 27 },
-  { id: "c5", title: "Speaking club: daily routines", teacherId: "t5", subject: "Inglés", level: "Secundaria", grade: "1.º - 3.º", day: "Jueves", time: "16:30", seats: 15, taken: 11 },
-  { id: "c6", title: "Culturas preincas en 45 minutos", teacherId: "t4", subject: "Historia", level: "Secundaria", grade: "2.º - 4.º", day: "Jueves", time: "17:00", seats: 35, taken: 14 },
-  { id: "c7", title: "Células: la fábrica de la vida", teacherId: "t2", subject: "Ciencia", level: "Secundaria", grade: "3.º - 5.º", day: "Viernes", time: "16:00", seats: 30, taken: 22 },
-  { id: "c8", title: "Colors & animals con canciones", teacherId: "t5", subject: "Inglés", level: "Primaria", grade: "1.º - 3.º", day: "Viernes", time: "15:30", seats: 20, taken: 6 },
+  { id: "c1", title: "Fracciones sin miedo", teacherId: "t1", subject: "Matemática", level: "Primaria", grade: "4.º - 6.º", day: "Hoy", time: "16:00", seats: 4, taken: 3, live: true },
+  { id: "c2", title: "El sistema solar en 3D", teacherId: "t2", subject: "Ciencia", level: "Primaria", grade: "3.º - 5.º", day: "Hoy", time: "17:30", seats: 4, taken: 2 },
+  { id: "c3", title: "Comprensión lectora: detectives del texto", teacherId: "t3", subject: "Comunicación", level: "Primaria", grade: "2.º - 4.º", day: "Mañana", time: "15:00", seats: 4, taken: 1 },
+  { id: "c4", title: "Ecuaciones de primer grado", teacherId: "t1", subject: "Matemática", level: "Secundaria", grade: "1.º - 2.º", day: "Mañana", time: "18:00", seats: 4, taken: 3 },
+  { id: "c5", title: "Speaking club: daily routines", teacherId: "t5", subject: "Inglés", level: "Secundaria", grade: "1.º - 3.º", day: "Jueves", time: "16:30", seats: 4, taken: 2 },
+  { id: "c6", title: "Culturas preincas en 45 minutos", teacherId: "t4", subject: "Historia", level: "Secundaria", grade: "2.º - 4.º", day: "Jueves", time: "17:00", seats: 4, taken: 1 },
+  { id: "c7", title: "Células: la fábrica de la vida", teacherId: "t2", subject: "Ciencia", level: "Secundaria", grade: "3.º - 5.º", day: "Viernes", time: "16:00", seats: 4, taken: 3 },
+  { id: "c8", title: "Colors & animals con canciones", teacherId: "t5", subject: "Inglés", level: "Primaria", grade: "1.º - 3.º", day: "Viernes", time: "15:30", seats: 4, taken: 1 },
 ];
 
 export type MaterialType = "Guía" | "Video" | "Ejercicios" | "Juego";
@@ -120,49 +120,6 @@ export const BADGES = [
   { id: "b8", name: "Racha de 30 días", emoji: "🌟", earned: false },
 ];
 
-export type Plan = {
-  id: "semilla" | "estrella" | "cometa";
-  name: string;
-  emoji: string;
-  monthly: number;
-  tagline: string;
-  features: string[];
-  highlight?: boolean;
-};
-
-export const PLANS: Plan[] = [
-  {
-    id: "semilla",
-    name: "Semilla",
-    emoji: "🌱",
-    monthly: 0,
-    tagline: "Para empezar a explorar",
-    features: ["2 clases en vivo al mes", "Material de reforzamiento básico", "Reto rápido diario", "Postula a becas"],
-  },
-  {
-    id: "estrella",
-    name: "Estrella",
-    emoji: "⭐",
-    monthly: 29,
-    tagline: "El favorito de las familias",
-    features: ["12 clases en vivo al mes", "Todo el material y ejercicios", "Reporte de progreso semanal", "Insignias y premios", "Soporte para apoderados"],
-    highlight: true,
-  },
-  {
-    id: "cometa",
-    name: "Cometa",
-    emoji: "☄️",
-    monthly: 49,
-    tagline: "Refuerzo sin límites",
-    features: ["Clases en vivo ilimitadas", "2 tutorías 1 a 1 al mes", "Plan de estudio personalizado", "Simulacros de exámenes", "Prioridad en concursos"],
-  },
-];
-
-/** Annual billing charges 10 months (2 months free). */
-export function planPrice(monthly: number, cycle: "mensual" | "anual") {
-  return cycle === "anual" ? monthly * 10 : monthly;
-}
-
 export type Scholarship = {
   id: string;
   title: string;
@@ -180,7 +137,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "s1",
     title: "Beca Talento Cometa",
     sponsor: "Fundación Cometa",
-    coverage: "100% del plan Cometa por 1 año",
+    coverage: "100% del plan grupal por 1 año",
     level: "Primaria y Secundaria",
     deadline: "2026-12-15",
     spots: 50,
@@ -191,7 +148,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "s2",
     title: "Beca Mujeres en Ciencia",
     sponsor: "Alianza STEM Perú",
-    coverage: "Plan Estrella + kit de laboratorio",
+    coverage: "Plan grupal con 50% de descuento + kit de laboratorio",
     level: "Secundaria",
     deadline: "2026-12-30",
     spots: 30,
@@ -202,7 +159,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "s3",
     title: "Beca Lectores del Futuro",
     sponsor: "Biblioteca Abierta",
-    coverage: "50% del plan Estrella + 10 libros",
+    coverage: "50% del plan grupal + 10 libros",
     level: "Primaria",
     deadline: "2027-01-20",
     spots: 80,
