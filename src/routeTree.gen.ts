@@ -20,6 +20,7 @@ import { Route as PlanesRouteImport } from './routes/planes'
 import { Route as ProgresoRouteImport } from './routes/progreso'
 import { Route as RegistroRouteImport } from './routes/registro'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppEstudianteRouteImport } from './routes/app.estudiante'
 import { Route as AppGrupoRouteImport } from './routes/app.grupo'
 import { Route as AppPlanRouteImport } from './routes/app.plan'
 import { Route as AppReporteRouteImport } from './routes/app.reporte'
@@ -79,6 +80,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppEstudianteRoute = AppEstudianteRouteImport.update({
+  id: '/estudiante',
+  path: '/estudiante',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppGrupoRoute = AppGrupoRouteImport.update({
   id: '/grupo',
   path: '/grupo',
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
   '/registro': typeof RegistroRoute
+  '/app/estudiante': typeof AppEstudianteRoute
   '/app/grupo': typeof AppGrupoRoute
   '/app/plan': typeof AppPlanRoute
   '/app/reporte': typeof AppReporteRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
   '/registro': typeof RegistroRoute
+  '/app/estudiante': typeof AppEstudianteRoute
   '/app/grupo': typeof AppGrupoRoute
   '/app/plan': typeof AppPlanRoute
   '/app/reporte': typeof AppReporteRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/planes': typeof PlanesRoute
   '/progreso': typeof ProgresoRoute
   '/registro': typeof RegistroRoute
+  '/app/estudiante': typeof AppEstudianteRoute
   '/app/grupo': typeof AppGrupoRoute
   '/app/plan': typeof AppPlanRoute
   '/app/reporte': typeof AppReporteRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/planes'
     | '/progreso'
     | '/registro'
+    | '/app/estudiante'
     | '/app/grupo'
     | '/app/plan'
     | '/app/reporte'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/planes'
     | '/progreso'
     | '/registro'
+    | '/app/estudiante'
     | '/app/grupo'
     | '/app/plan'
     | '/app/reporte'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/planes'
     | '/progreso'
     | '/registro'
+    | '/app/estudiante'
     | '/app/grupo'
     | '/app/plan'
     | '/app/reporte'
@@ -285,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/estudiante': {
+      id: '/app/estudiante'
+      path: '/estudiante'
+      fullPath: '/app/estudiante'
+      preLoaderRoute: typeof AppEstudianteRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/grupo': {
       id: '/app/grupo'
       path: '/grupo'
@@ -310,6 +329,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppEstudianteRoute: typeof AppEstudianteRoute
   AppGrupoRoute: typeof AppGrupoRoute
   AppPlanRoute: typeof AppPlanRoute
   AppReporteRoute: typeof AppReporteRoute
@@ -317,6 +337,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppEstudianteRoute: AppEstudianteRoute,
   AppGrupoRoute: AppGrupoRoute,
   AppPlanRoute: AppPlanRoute,
   AppReporteRoute: AppReporteRoute,

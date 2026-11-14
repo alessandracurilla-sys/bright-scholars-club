@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useHydrated, usePlatform } from "@/lib/platform/store";
 
 const NAV = [
   { to: "/clases", label: "Clases en vivo" },
@@ -11,6 +12,10 @@ const NAV = [
 ] as const;
 
 export function SiteHeader() {
+  const { family } = usePlatform();
+  const hydrated = useHydrated();
+  const registered = hydrated && !!family;
+
   return (
     <header className="sticky top-0 z-40 border-b-[2.5px] border-navy-deep bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-6">
@@ -35,12 +40,15 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-3">
-          <Button asChild variant="pop" size="lg" className="hidden sm:inline-flex">
-            <Link to="/app">Mi cuenta</Link>
-          </Button>
-          <Button asChild variant="pink" size="lg">
-            <Link to="/registro" search={{ plan: "grupal" }}>Clase gratis</Link>
-          </Button>
+          {registered ? (
+            <Button asChild variant="pink" size="lg">
+              <Link to="/app">Mi panel</Link>
+            </Button>
+          ) : (
+            <Button asChild variant="pink" size="lg">
+              <Link to="/registro" search={{ plan: "grupal" }}>Regístrate</Link>
+            </Button>
+          )}
         </div>
       </div>
       <nav className="flex gap-1 overflow-x-auto px-4 pb-3 lg:hidden">

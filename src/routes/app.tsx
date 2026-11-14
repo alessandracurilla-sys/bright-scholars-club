@@ -21,6 +21,8 @@ const TABS = [
   { to: "/app/grupo", label: "Mi grupo", exact: false },
   { to: "/app/reporte", label: "Reporte semanal", exact: false },
   { to: "/app/plan", label: "Plan y pagos", exact: false },
+  { to: "/app/estudiante", label: "Vista del estudiante", exact: false },
+  { to: "/docente", label: "Vista del docente (demo)", exact: false },
 ] as const;
 
 function AppLayout() {

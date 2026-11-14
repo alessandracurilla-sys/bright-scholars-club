@@ -23,9 +23,7 @@ export function SiteFooter() {
           <p className="font-display font-semibold text-pink">Oportunidades</p>
           <Link to="/becas" className="block text-navy-foreground/80 hover:text-navy-foreground">Becas y premios</Link>
           <Link to="/planes" className="block text-navy-foreground/80 hover:text-navy-foreground">Planes</Link>
-          <Link to="/registro" search={{ plan: "grupal" }} className="block text-navy-foreground/80 hover:text-navy-foreground">Registro y diagnóstico</Link>
-          <Link to="/app" className="block text-navy-foreground/80 hover:text-navy-foreground">Mi cuenta</Link>
-          <Link to="/docente" className="block text-navy-foreground/80 hover:text-navy-foreground">Panel del docente (demo)</Link>
+          <Link to="/registro" search={{ plan: "grupal" }} className="block text-navy-foreground/80 hover:text-navy-foreground">Regístrate</Link>
         </div>
       </div>
       <div className="border-t border-navy-foreground/15 py-5 text-center text-sm text-navy-foreground/60">

@@ -66,7 +66,7 @@ describe("Grupos, planes y reporte", () => {
 });
 
 describe("Rutas de la plataforma", () => {
-  it.each(["/", "/planes", "/registro", "/diagnostico", "/app", "/app/grupo", "/app/reporte", "/app/plan", "/docente"])(
+  it.each(["/", "/planes", "/registro", "/diagnostico", "/app", "/app/grupo", "/app/reporte", "/app/plan", "/app/estudiante", "/docente"])(
     "existe una página para %s",
     (path) => {
       const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
