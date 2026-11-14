@@ -157,7 +157,7 @@ function Results() {
         </p>
       </div>
       <Button asChild variant="pink" size="xl" className="mt-8">
-        <Link to="/app/grupo">Ver mi grupo y elegir horario <ArrowRight /></Link>
+        <Link to="/app">Entrar a mi panel <ArrowRight /></Link>
       </Button>
     </Shell>
   );

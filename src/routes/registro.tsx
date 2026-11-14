@@ -106,6 +106,9 @@ function RegistroPage() {
 
       <section className="mx-auto grid max-w-6xl gap-8 px-6 py-14 lg:grid-cols-[1fr_1.4fr]">
         <aside className="space-y-6">
+          <div className="rounded-2xl border-2 border-navy-deep bg-sunshine px-4 py-3 text-sm font-semibold text-sunshine-foreground">
+            Registro de demostración: no se envía ni se cobra nada. Al terminar entras a tu panel.
+          </div>
           <div className="card-pop bg-candy p-7 text-pink-foreground">
             <p className="text-sm opacity-90">Plan elegido</p>
             <p className="font-display text-3xl font-bold">{plan.name}</p>

@@ -82,6 +82,13 @@ function Dashboard() {
             <Button asChild variant="pop" size="lg" className="mt-4"><Link to="/app/reporte">Abrir reporte</Link></Button>
           </div>
         )}
+
+        <div className="card-pop bg-pink-soft p-6">
+          <p className="font-display text-sm font-semibold uppercase tracking-wide text-pink">Para {first}</p>
+          <p className="mt-1 text-xl font-bold text-navy">Su vista de estudiante</p>
+          <p className="text-muted-foreground">Su ruta, su próxima clase y sus insignias.</p>
+          <Button asChild variant="navy" size="lg" className="mt-4"><Link to="/app/estudiante">Ver como estudiante</Link></Button>
+        </div>
       </section>
     </div>
   );

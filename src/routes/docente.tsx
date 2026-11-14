@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
@@ -51,9 +51,22 @@ function DocentePage() {
 
   if (!hydrated) return <div className="mx-auto min-h-[50vh] max-w-6xl px-6 py-10" aria-busy="true" />;
 
+  if (!family) {
+    return (
+      <div className="mx-auto max-w-2xl px-6 py-20">
+        <div className="card-pop p-10 text-center">
+          <p className="text-3xl font-bold text-navy">Primero regístrate</p>
+          <p className="mt-2 text-muted-foreground">El panel del docente muestra a tu hijo o hija dentro de su grupo, así que se habilita después del registro.</p>
+          <Button asChild variant="pink" size="xl" className="mt-6"><Link to="/registro">Regístrate</Link></Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
-      <p className="font-display text-sm font-semibold uppercase tracking-wide text-pink">Panel del docente · demostración</p>
+      <Link to="/app" className="font-display text-sm font-semibold text-pink underline underline-offset-2">← Volver a mi panel</Link>
+      <p className="mt-3 font-display text-sm font-semibold uppercase tracking-wide text-pink">Vista del docente · demostración</p>
       <h1 className="mt-1 text-3xl font-bold text-navy md:text-4xl">{teacher.name}</h1>
       <p className="text-muted-foreground">
         Grupo de {SUBJECT_LABEL[subject]} · {blockLabel(block)} · {students.length} de {GROUP_MAX} alumnos
