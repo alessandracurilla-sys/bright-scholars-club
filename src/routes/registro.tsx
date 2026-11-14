@@ -1,14 +1,14 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { ShieldCheck } from "lucide-react";
+import { Rocket, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageHero } from "@/components/site/PageHero";
 import { PLAN_OPTIONS, formatSoles, getPlan, type PlanId } from "@/lib/platform/plans";
-import { SUBJECT_LABEL, type SubjectKey } from "@/lib/platform/diagnostic";
+import { SUBJECT_LABEL, sampleDiagnostic, type SubjectKey } from "@/lib/platform/diagnostic";
 import { updatePlatform } from "@/lib/platform/store";
 import { cn } from "@/lib/utils";
 
@@ -95,6 +95,28 @@ function RegistroPage() {
     void navigate({ to: "/diagnostico" });
   }
 
+  function quickEntry() {
+    updatePlatform({
+      family: {
+        guardian: "María Rojas",
+        email: "demo@cometa.pe",
+        phone: "",
+        student: "Valentina Rojas",
+        grade: "2.º de secundaria",
+        subject: "matematica",
+        plan: planId,
+        consentAt: new Date().toISOString(),
+      },
+      diagnostic: sampleDiagnostic("matematica"),
+      block: undefined,
+      trialBooked: false,
+      paid: false,
+      reportApproved: false,
+    });
+    toast.success("Entraste con una familia de ejemplo 🚀");
+    void navigate({ to: "/app" });
+  }
+
   return (
     <>
       <PageHero
@@ -109,6 +131,10 @@ function RegistroPage() {
           <div className="rounded-2xl border-2 border-navy-deep bg-sunshine px-4 py-3 text-sm font-semibold text-sunshine-foreground">
             Registro de demostración: no se envía ni se cobra nada. Al terminar entras a tu panel.
           </div>
+          <Button type="button" variant="navy" size="xl" className="w-full" onClick={quickEntry}>
+            <Rocket /> Entrar en 1 clic (demo)
+          </Button>
+          <p className="-mt-3 text-center text-sm text-muted-foreground">Usa una familia de ejemplo y salta el formulario y el test.</p>
           <div className="card-pop bg-candy p-7 text-pink-foreground">
             <p className="text-sm opacity-90">Plan elegido</p>
             <p className="font-display text-3xl font-bold">{plan.name}</p>

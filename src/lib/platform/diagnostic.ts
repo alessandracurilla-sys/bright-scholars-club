@@ -122,3 +122,11 @@ export const LEVEL_STYLE: Record<Level, string> = {
   "En proceso": "bg-sunshine/40 text-sunshine-foreground",
   Logrado: "bg-mint-soft text-navy-deep",
 };
+
+/** Resultado de ejemplo para demos: omite el test sin dejar el panel vacío. */
+export function sampleDiagnostic(subject: SubjectKey): Diagnostic {
+  const answers = QUESTIONS[subject].map((q, i) =>
+    i === 0 || i === 1 || i === 5 ? (q.answer + 1) % q.options.length : q.answer,
+  );
+  return scoreDiagnostic(subject, answers);
+}

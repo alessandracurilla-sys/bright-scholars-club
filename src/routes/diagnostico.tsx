@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LEVEL_STYLE, QUESTIONS, SUBJECT_LABEL, scoreDiagnostic } from "@/lib/platform/diagnostic";
+import { LEVEL_STYLE, QUESTIONS, SUBJECT_LABEL, sampleDiagnostic, scoreDiagnostic } from "@/lib/platform/diagnostic";
 import { updatePlatform, useHydrated, usePlatform } from "@/lib/platform/store";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +26,7 @@ function DiagnosticoPage() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [picked, setPicked] = useState<number | null>(null);
   const hydrated = useHydrated();
+  const navigate = useNavigate();
 
   if (!hydrated) return <Shell><div aria-busy="true" className="min-h-[40vh]" /></Shell>;
 
@@ -54,6 +55,11 @@ function DiagnosticoPage() {
 
   const q = questions[idx]!;
   const answered = picked !== null;
+
+  function skip() {
+    updatePlatform({ diagnostic: sampleDiagnostic(family!.subject) });
+    void navigate({ to: "/app" });
+  }
 
   function next() {
     if (picked === null) return;
@@ -115,6 +121,7 @@ function DiagnosticoPage() {
         <Button variant="pink" size="xl" className="mt-6 w-full sm:w-auto" disabled={!answered} onClick={next}>
           {idx + 1 >= questions.length ? "Ver mi resultado" : "Siguiente"} <ArrowRight />
         </Button>
+        <Button variant="ghost" size="lg" className="ml-2 mt-6" onClick={skip}>Omitir test (usar resultado de ejemplo)</Button>
       </div>
     </Shell>
   );
